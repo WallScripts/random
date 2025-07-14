@@ -1,3 +1,6 @@
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/WallScripts/random/refs/heads/main/testeorion"))()
+
+
 local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/WallScripts/library/refs/heads/main/Orion(pe).luau"))()
 
 local Window = OrionLib:MakeWindow({
