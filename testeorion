@@ -1,0 +1,136 @@
+local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/WallScripts/library/refs/heads/main/Orion(pe).luau"))()
+
+local Window = OrionLib:MakeWindow({
+    Name = "Tralalelo",
+    HidePremium = false,
+    SaveConfig = false,
+    ConfigFolder = "eeee",
+    IntroEnabled = true,
+    IntroText = "blablabal"
+})
+
+local Tab1 = Window:MakeTab({
+    Name = "teste",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+local Section1 = Tab1:AddSection({
+    Name = "plr"
+})
+
+Tab1:AddLabel("exemplo fudido")
+
+Tab1:AddButton({
+    Name = "butao",
+    Callback = function()
+        OrionLib:MakeNotification({
+            Name = "oi",
+            Content = "hauahs",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end    
+})
+
+local toggleValue = false
+Tab1:AddToggle({
+    Name = "toggle",
+    Default = false,
+    Callback = function(Value)
+        toggleValue = Value
+        print("Toggle:", Value)
+    end    
+})
+
+local sliderValue = 16
+Tab1:AddSlider({
+    Name = "speed",
+    Min = 1,
+    Max = 100,
+    Default = 16,
+    Color = Color3.fromRGB(255, 255, 255),
+    Increment = 1,
+    ValueName = "speed",
+    Callback = function(Value)
+        sliderValue = Value
+        print("Slider:", Value)
+    end    
+})
+
+Tab1:AddTextbox({
+    Name = "textbox",
+    Default = "Digite",
+    TextDisappear = true,
+    Callback = function(Value)
+        print("Textbox:", Value)
+    end      
+})
+
+Tab1:AddDropdown({
+    Name = "opcao",
+    Default = "Opção 1",
+    Options = {"Opção 1", "Opção 2", "Opção 3", "Opção 4"},
+    Callback = function(Value)
+        print("Dropdown:", Value)
+    end    
+})
+
+local function setWalkSpeed(speed)
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("Humanoid") then
+        player.Character.Humanoid.WalkSpeed = speed
+    end
+end
+
+local function setJumpPower(power)
+    local player = game.Players.LocalPlayer
+    if player and player.Character and player.Character:FindFirstChild("Humanoid") then
+        player.Character.Humanoid.JumpPower = power
+    end
+end
+
+Tab1:AddSlider({
+    Name = "walkspeed",
+    Min = 1,
+    Max = 100,
+    Default = 16,
+    Color = Color3.fromRGB(255, 0, 0),
+    Increment = 1,
+    ValueName = "walkspeed",
+    Callback = function(Value)
+        setWalkSpeed(Value)
+    end    
+})
+
+Tab1:AddSlider({
+    Name = "jumpower",
+    Min = 1,
+    Max = 200,
+    Default = 50,
+    Color = Color3.fromRGB(0, 255, 0),
+    Increment = 1,
+    ValueName = "power",
+    Callback = function(Value)
+        setJumpPower(Value)
+    end    
+})
+
+
+Tab1:AddColorpicker({
+    Name = "cor",
+    Default = Color3.fromRGB(255, 0, 0),
+    Callback = function(Value)
+        print("cor ", Value)
+    end      
+})
+
+
+Tab1:AddButton({
+    Name = "destroy",
+    Callback = function()
+        OrionLib:Destroy()
+    end    
+})
+
+OrionLib:Init()
