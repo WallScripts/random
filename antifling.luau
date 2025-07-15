@@ -1,3 +1,5 @@
+setclipboard(getgenv().antifling = true/false)
+
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 
